@@ -3,6 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Critter Crimes</title>
+
   <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
 </head>
 
@@ -18,29 +19,32 @@ const config = {
   parent: "game-container",
   backgroundColor: "#000000",
   scene: {
-  preload,
-  create
-}
+    preload,
+    create
+  }
 };
+
 function preload() {
-  this.load.image('map', 'assets/map.png');
+  // cache-bust prevents stale GitHub Pages asset issues
+  this.load.image('map', 'assets/map.png?v=' + Date.now());
 }
+
 function create() {
 
-  const map = this.add.image(0, 0, 'map');
+  const map = this.add.image(
+    window.innerWidth / 2,
+    window.innerHeight / 2,
+    'map'
+  );
 
-  // center it properly
-  map.setOrigin(0.5, 0.5);
-  map.x = window.innerWidth / 2;
-  map.y = window.innerHeight / 2;
-
-  // safer scaling method
-  const scaleX = window.innerWidth / map.displayWidth;
-  const scaleY = window.innerHeight / map.displayHeight;
+  // scale to fit screen
+  const scaleX = window.innerWidth / map.width;
+  const scaleY = window.innerHeight / map.height;
   const scale = Math.max(scaleX, scaleY);
 
   map.setScale(scale);
 
+  // UI text overlay
   this.add.text(20, 20, "CRITTER CRIMES LIVE", {
     fontSize: "20px",
     color: "#ffffff"
