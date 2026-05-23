@@ -43,16 +43,20 @@ function create() {
   const scaleY = this.cameras.main.height / map.height;
   const scale = Math.min(scaleX, scaleY);
   const goose = this.add.image(
-  this.cameras.main.centerX - 100,
+  this.cameras.main.centerX - 120,
   this.cameras.main.centerY,
   'goose'
-).setScale(0.4);
+);
+
+goose.setScale(0.2);
 
 const dog = this.add.image(
-  this.cameras.main.centerX + 100,
+  this.cameras.main.centerX + 120,
   this.cameras.main.centerY,
   'dog'
-).setScale(0.4);
+);
+
+dog.setScale(0.2);
   map.setScale(scale);
 
   // UI layer (fixed to screen)
