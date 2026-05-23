@@ -29,18 +29,23 @@ new Phaser.Game(config);
 
 function preload() {
   console.log("PRELOAD RUNNING");
+  
   this.load.image('map', 'assets/map.png');
   this.load.image('goose', 'assets/goose.png');
   this.load.image('dog', 'assets/dog.png');
 }
 
 function create() {
-  console.log("CREATE RUNNING");
 
-  this.add.text(50, 50, "GAME IS RUNNING", {
-    color: "#ffffff",
-    fontSize: "24px"
+  this.add.text(20, 20, "CRITTER CRIMES LIVE", {
+    fontSize: "20px",
+    color: "#ffffff"
   });
+
+  const map = this.add.image(400, 300, 'map');
+
+  map.setScale(1);
+
 }
 
 </script>
