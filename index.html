@@ -27,6 +27,8 @@ new Phaser.Game(config);
 
 function preload() {
   this.load.image('map', 'assets/map.png');
+  this.load.image('goose', 'assets/goose.png');
+  this.load.image('dog', 'assets/dog.png');
 }
 
 function create() {
@@ -40,7 +42,17 @@ function create() {
   const scaleX = this.cameras.main.width / map.width;
   const scaleY = this.cameras.main.height / map.height;
   const scale = Math.min(scaleX, scaleY);
+  const goose = this.add.image(
+  this.cameras.main.centerX - 100,
+  this.cameras.main.centerY,
+  'goose'
+).setScale(0.4);
 
+const dog = this.add.image(
+  this.cameras.main.centerX + 100,
+  this.cameras.main.centerY,
+  'dog'
+).setScale(0.4);
   map.setScale(scale);
 
   // UI layer (fixed to screen)
