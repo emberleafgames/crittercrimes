@@ -1,46 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Critter Crimes Debug</title>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
+</head>
+
+<body style="margin:0; background:black;">
+
+<div id="game-container"></div>
+
+<script>
+
+console.log("SCRIPT LOADED");
+
 const config = {
   type: Phaser.AUTO,
-  width: window.innerWidth,
-  height: window.innerHeight,
+  width: 800,
+  height: 600,
   parent: "game-container",
-  backgroundColor: "#000000",
   scene: {
-    preload: preload,
-    create: create
+    preload,
+    create
   }
 };
 
 new Phaser.Game(config);
 
 function preload() {
-  this.load.image('map', 'assets/map.png?v=' + Date.now());
+  console.log("PRELOAD RUNNING");
+  this.load.image('map', 'assets/map.png');
   this.load.image('goose', 'assets/goose.png');
   this.load.image('dog', 'assets/dog.png');
 }
 
 function create() {
+  console.log("CREATE RUNNING");
 
-  const map = this.add.image(
-    window.innerWidth / 2,
-    window.innerHeight / 2,
-    'map'
-  );
-
-  const scale = Math.min(
-    window.innerWidth / map.width,
-    window.innerHeight / map.height
-  );
-
-  map.setScale(scale);
-
-  const goose = this.add.image(300, 300, 'goose');
-  goose.setScale(0.5);
-
-  const dog = this.add.image(600, 300, 'dog');
-  dog.setScale(0.5);
-
-  this.add.text(20, 20, "CRITTER CRIMES LIVE", {
-    fontSize: "20px",
-    color: "#ffffff"
+  this.add.text(50, 50, "GAME IS RUNNING", {
+    color: "#ffffff",
+    fontSize: "24px"
   });
 }
+
+</script>
+
+</body>
+</html>
