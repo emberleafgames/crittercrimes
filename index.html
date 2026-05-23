@@ -2,23 +2,21 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Critter Crimes Debug</title>
+  <title>Critter Crimes</title>
   <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
 </head>
 
-<body style="margin:0; background:black;">
-
+<body style="margin:0; background:black; overflow:hidden;">
 <div id="game-container"></div>
 
 <script>
 
-console.log("SCRIPT LOADED");
-
 const config = {
   type: Phaser.AUTO,
-  width: 800,
-  height: 600,
+  width: window.innerWidth,
+  height: window.innerHeight,
   parent: "game-container",
+  backgroundColor: "#000000",
   scene: {
     preload,
     create
@@ -28,21 +26,28 @@ const config = {
 new Phaser.Game(config);
 
 function preload() {
-  console.log("PRELOAD RUNNING");
-  
   this.load.image('map', 'assets/map.png');
 }
 
 function create() {
 
-  this.add.text(20, 20, "CRITTER CRIMES LIVE", {
+  const map = this.add.image(
+    this.cameras.main.centerX,
+    this.cameras.main.centerY,
+    'map'
+  );
+
+  // fit map to screen properly
+  const scaleX = this.cameras.main.width / map.width;
+  const scaleY = this.cameras.main.height / map.height;
+  const scale = Math.min(scaleX, scaleY);
+
+  map.setScale(scale);
+
+  this.add.text(20, 20, "CRITTER CRIMES", {
     fontSize: "20px",
     color: "#ffffff"
   });
-
-  const map = this.add.image(400, 300, 'map');
-
-  map.setScale(1);
 
 }
 
