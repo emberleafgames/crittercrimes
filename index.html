@@ -25,8 +25,9 @@ const config = {
 };
 
 function preload() {
-  // cache-bust prevents stale GitHub Pages asset issues
   this.load.image('map', 'assets/map.png?v=' + Date.now());
+  this.load.image('goose', 'assets/goose.png');
+  this.load.image('dog', 'assets/dog.png');
 }
 
 function create() {
@@ -52,7 +53,11 @@ function create() {
   });
 
 }
+const goose = this.add.image(300, 300, 'goose');
+goose.setScale(0.5);
 
+const dog = this.add.image(600, 300, 'dog');
+dog.setScale(0.5);
 new Phaser.Game(config);
 </script>
 
