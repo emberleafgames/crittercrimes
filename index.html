@@ -37,17 +37,17 @@ function create() {
     'map'
   );
 
-  // fit map to screen properly
   const scaleX = this.cameras.main.width / map.width;
   const scaleY = this.cameras.main.height / map.height;
   const scale = Math.min(scaleX, scaleY);
 
   map.setScale(scale);
 
+  // UI layer (fixed to screen)
   this.add.text(20, 20, "CRITTER CRIMES", {
-    fontSize: "20px",
+    fontSize: "24px",
     color: "#ffffff"
-  });
+  }).setScrollFactor(0);
 
 }
 
