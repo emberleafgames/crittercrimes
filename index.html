@@ -27,15 +27,16 @@ function preload() {
 }
 function create() {
 
-  const map = this.add.image(
-    window.innerWidth / 2,
-    window.innerHeight / 2,
-    'map'
-  );
+  const map = this.add.image(0, 0, 'map');
 
-  // scale map to fit screen
-  const scaleX = window.innerWidth / map.width;
-  const scaleY = window.innerHeight / map.height;
+  // center it properly
+  map.setOrigin(0.5, 0.5);
+  map.x = window.innerWidth / 2;
+  map.y = window.innerHeight / 2;
+
+  // safer scaling method
+  const scaleX = window.innerWidth / map.displayWidth;
+  const scaleY = window.innerHeight / map.displayHeight;
   const scale = Math.max(scaleX, scaleY);
 
   map.setScale(scale);
