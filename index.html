@@ -37,14 +37,15 @@ function create() {
     'map'
   );
 
-  // scale to fit screen
+  // Get screen and image ratios
   const scaleX = window.innerWidth / map.width;
   const scaleY = window.innerHeight / map.height;
-  const scale = Math.max(scaleX, scaleY);
+
+  // IMPORTANT CHANGE: use MIN instead of MAX
+  const scale = Math.min(scaleX, scaleY);
 
   map.setScale(scale);
 
-  // UI text overlay
   this.add.text(20, 20, "CRITTER CRIMES LIVE", {
     fontSize: "20px",
     color: "#ffffff"
