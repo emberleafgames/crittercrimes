@@ -17,14 +17,34 @@ const config = {
   height: window.innerHeight,
   parent: "game-container",
   backgroundColor: "#000000",
-  scene: { create }
+  scene: {
+  preload,
+  create
+}
 };
-
+function preload() {
+  this.load.image('map', 'assets/map.png');
+}
 function create() {
-  this.add.text(50, 50, "CRITTER CRIMES LIVE", {
-    fontSize: "32px",
+
+  const map = this.add.image(
+    window.innerWidth / 2,
+    window.innerHeight / 2,
+    'map'
+  );
+
+  // scale map to fit screen
+  const scaleX = window.innerWidth / map.width;
+  const scaleY = window.innerHeight / map.height;
+  const scale = Math.max(scaleX, scaleY);
+
+  map.setScale(scale);
+
+  this.add.text(20, 20, "CRITTER CRIMES LIVE", {
+    fontSize: "20px",
     color: "#ffffff"
   });
+
 }
 
 new Phaser.Game(config);
