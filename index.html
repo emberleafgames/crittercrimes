@@ -3,16 +3,32 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Critter Crimes</title>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
 </head>
-<body style="margin:0; background:black; color:white; text-align:center;">
 
-  <h1>Critter Crimes</h1>
+<body style="margin:0; background:black; overflow:hidden;">
 
-  <div id="game-container" style="width:100vw; height:70vh;"></div>
+<div id="game-container"></div>
 
-  <script>
-    alert("Site is running outside Squarespace correctly");
-  </script>
+<script>
+const config = {
+  type: Phaser.AUTO,
+  width: window.innerWidth,
+  height: window.innerHeight,
+  parent: "game-container",
+  backgroundColor: "#000000",
+  scene: { create }
+};
+
+function create() {
+  this.add.text(50, 50, "CRITTER CRIMES LIVE", {
+    fontSize: "32px",
+    color: "#ffffff"
+  });
+}
+
+new Phaser.Game(config);
+</script>
 
 </body>
 </html>
