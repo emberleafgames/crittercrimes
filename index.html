@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Critter Crimes — A Critter Mob Game from Ember Leaf Games</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Cute critters hit hard times. An asymmetric crime caper board game for 2–5 players, set in a hand-illustrated 1930s Central Park." />
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Special+Elite&family=DM+Sans:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #e8dcc4; }
+  body { font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { cursor: pointer; }
+  body.cc-center-forage .cc-forage-stack {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  #root > div { width: 100%; }
+</style>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body class="cc-center-forage">
+<div id="root"></div>
+
+<script>window.SIGNUP_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbw6W4rP37vb3hGlhk5mKKldUXJANpowdOTwaGmGc4XBe-5RsdRsl_vAnycFZUZ4Eit7/exec';</script>
+
+<script type="text/babel" src="shared-data.jsx"></script>
+<script type="text/babel" src="signup.jsx"></script>
+<script type="text/babel" src="direction-a.jsx"></script>
+
+<script type="text/babel" data-presets="env,react">
+  ReactDOM.createRoot(document.getElementById('root')).render(<DirectionRapSheet />);
+</script>
+</body>
+</html>
