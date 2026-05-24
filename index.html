@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Critter Crimes — A Critter Mob Game from Ember Leaf Games</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Cute critters hit hard times. An asymmetric crime caper board game for 2–5 players, set in a hand-illustrated 1930s Central Park." />
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Special+Elite&family=DM+Sans:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: #e8dcc4;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  body {
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { cursor: pointer; }
+  body.cc-center-forage .cc-forage-stack {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Scale wrapper — shrinks the 1200px design to fit any screen */
+  #scale-root {
+    width: 1200px;
+    transform-origin: top left;
+  }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+</head>
+<body class="cc-center-forage">
+
+<div id="scale-root">
+  <div id="root"></div>
+</div>
+
+<script>window.SIGNUP_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbw6W4rP37vb3hGlhk5mKKldUXJANpowdOTwaGmGc4XBe-5RsdRsl_vAnycFZUZ4Eit7/exec';</script>
+
+<script src="shared-data.js"></script>
+<script src="signup.js"></script>
+<script src="direction-a.js"></script>
+
+<script>
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    React.createElement(window.DirectionRapSheet)
+  );
+
+  // Scale the 1200px design down to fit the actual screen width
+  var DESIGN_WIDTH = 1200;
+  var scaleRoot = document.getElementById('scale-root');
+
+  function applyScale() {
+    var available = document.documentElement.clientWidth;
+    var scale = Math.min(1, available / DESIGN_WIDTH);
+    scaleRoot.style.transform = 'scale(' + scale + ')';
+    // Shrink the height so the page doesn't leave a gap at the bottom
+    scaleRoot.style.height = (scaleRoot.scrollHeight * scale) + 'px';
+    document.body.style.height = (scaleRoot.scrollHeight * scale) + 'px';
+  }
+
+  // Run after React renders
+  setTimeout(applyScale, 100);
+  window.addEventListener('resize', applyScale);
+  // Run again once images/fonts load
+  window.addEventListener('load', applyScale);
+</script>
+</body>
+</html>
