@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <title>Critter Crimes — A Critter Mob Game from Ember Leaf Games</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Cute critters hit hard times. An asymmetric crime caper board game for 2–5 players, set in a hand-illustrated 1930s Central Park." />
+<meta name="description" content="Cute critters hit hard times. An asymmetric crime caper board game for 1–5 players, set in a hand-illustrated 1930s Central Park." />
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -159,7 +159,7 @@ const NAV_LINKS = [
   { label: 'Services', href: '#' },
 ];
 
-const PITCH = `Cute critters hit hard times. In this asymmetric board game for 2–5 players, you'll grow your criminal critter syndicate and vie for control of 1930s Central Park — New York City's up-and-coming 6th Burrow. Collect food dice, pull off daring crimes, stash your loot, and play dirty for powerful bonuses. But don't get too greedy. Your rivals might plant dirt on you… or sic the Bark Ranger on your tail.`;
+const PITCH = `Cute critters hit hard times. In this asymmetric board game for 1–5 players, you'll grow your criminal critter syndicate and vie for control of 1930s Central Park — New York City's up-and-coming 6th Burrow. Collect food dice, pull off daring crimes, stash your loot, and play dirty for powerful bonuses. But don't get too greedy. Your rivals might sic the Bark Ranger on your tail.`;
 
 // Food + resource icons (food = dice, resources = burrow-building)
 const FOODS = [
@@ -224,9 +224,9 @@ const CRITTERS = [
     name: 'Owl Capone',
     species: 'Great Horned Owl · The Don',
     ability: 'Eyes Everywhere',
-    abilityText: 'At the start of your Day phase, you may gain 1 resource from the Conservatory Garden.',
+    abilityText: 'At the start of your Day phase, you may peek at 1 resource and swap it with any other that shares its type.',
     food: 'acorn', resource: 'bark',
-    rap: 'Tax evasion. Smuggling pellets. Allegedly runs everything.',
+    rap: 'Tax evasion. Smuggling pellets. Out-of-towner.',
     img: 'assets/Owl_Capone_crop.jpg', accent: '#3a4a6c',
   },
   {
@@ -244,7 +244,7 @@ const CRITTERS = [
     name: 'Tony Shellprano',
     species: 'Snapping Turtle · Mob Muscle',
     ability: 'Shell Game',
-    abilityText: 'At the start of your Day phase, you may swap any die or resource you control with another that shares its type.',
+    abilityText: 'At the start of your Day phase, you may swap any die with any other that shares its type.',
     food: 'cricket', resource: 'mud',
     rap: 'Extortion. Shell-game fraud. Loitering on lily pads.',
     img: 'assets/Tony_Shellprano_Crop.jpg', accent: '#4a5230',
@@ -254,7 +254,7 @@ const CRITTERS = [
     name: 'Vixcent Mangano',
     species: 'Red Fox · Fox and the Pound',
     ability: 'Fox and the Pound',
-    abilityText: 'At the start of your Day phase, you may charge any die by 3.',
+    abilityText: 'At the start of your Day phase, you may change any die value by 3.',
     food: 'egg', resource: 'grass',
     rap: 'Art theft. Identity theft. Theft theft.',
     img: 'assets/Vixcent_Mangano_Crop.jpg', accent: '#8c3a1f',
@@ -264,7 +264,7 @@ const CRITTERS = [
     name: 'Lucy Goosiano',
     species: 'Flapper Goose · Lady Luck',
     ability: 'Distracting Honk',
-    abilityText: 'At the start of your Day phase, you may draw a card.',
+    abilityText: 'At the start of your Day phase, you may reveal a card from your hand and gain a Capo of its type until the end of the night.',
     food: 'dandelion', resource: 'leaf',
     rap: 'Honking with intent. Loan-feathering. Allegedly armed.',
     img: 'assets/Lucy_Goosiano_Crop.jpg', accent: '#a87420',
@@ -274,7 +274,7 @@ const CRITTERS = [
 const BARK_RANGER = {
   name: 'Bark Ranger',
   title: 'Central Park Precinct, K-9 Division',
-  blurb: "He is always out on patrol. Get caught with dirty paws and sacrifice a crime card — plus one shred of dignity. Some say he's incorruptible, others say he has a price.",
+  blurb: "He is always out on patrol. Get caught with dirty paws and bribe him or your\'e off to jail — plus one shred of dignity. Some say he's incorruptible, others say he has a price.",
   img: 'assets/Bark_Ranger_Crop.jpg',
 };
 
@@ -309,7 +309,7 @@ const BOX_CONTENTS = [
   { qty: '1', item: 'Central Park game board', tag: 'oversized' },
   { qty: '5', item: 'Asymmetric Critter player boards', tag: 'dual-layer' },
   { qty: '5', item: 'Player Reference Cards', tag: '' },
-  { qty: '30', item: 'Food dice', tag: 'five varieties' },
+  { qty: '60', item: 'Food dice', tag: 'five varieties' },
   { qty: '60', item: 'Crime Cards (Minor & Major effects)', tag: 'linen finish' },
   { qty: '70', item: 'Cardboard tokens — Resources and Capos', tag: '' },
   { qty: '1', item: 'Bark Ranger Meeple', tag: 'meeple' },
@@ -317,7 +317,7 @@ const BOX_CONTENTS = [
 ];
 
 const STATS = [
-  { value: '2–5', label: 'Players' },
+  { value: '1–5', label: 'Players' },
   { value: '60–90', label: 'Minutes' },
   { value: '13+', label: 'Ages' },
   { value: 'Medium', label: 'Weight' },
@@ -551,7 +551,7 @@ function RapHero() {
             padding: '14px 0', marginBottom: 24, maxWidth: 480
           }}>
             A board game of <em>cute</em> &amp; <em>cunning</em>.<br />
-            2–5 players. 1930s Central Park. Zero scruples.
+            1–5 players. 1930s Central Park. Infinite Fun.
           </div>
 
           <div className="cc-hero-signup" style={{ maxWidth: 480 }}>
@@ -640,7 +640,7 @@ function RapMap() {
         <h2 style={{
           fontFamily: rapStyles.fontDisplay, fontSize: 42, lineHeight: 1,
           color: rapStyles.paper, margin: '8px 0 0', letterSpacing: -0.5
-        }}>The Park. The Whole Park.</h2>
+        }}>Newly Renovated Central Park.</h2>
         <p style={{
           fontFamily: rapStyles.fontBody, fontSize: 15, lineHeight: 1.5,
           color: '#d8c8ac', margin: '6px 0 0', maxWidth: 720
